@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Conversor de facturas</h2>
+  <div class="parent">
+    <!--  <input type="file" class="file-upload" onchange="onFileChange()">
+
+
+    <input type="file" id="fileInput" (change)="onChange($event)" />
+    <button [disabled]="!selected" (click)="loadFile()">
+      Convertir a excel
+    </button> -->
+
+    <input
+      type="file"
+      class="file-input"
+      (change)="onFileSelected($event)"
+      #fileUpload
+    />
+
+    <div class="file-upload">
+      {{ fileName || "No se ha seleccionado ningún archivo." }}
+
+      <button color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <!--  <mat-icon>attach_file</mat-icon> -->
+        Seleccionar
+      </button>
+    </div>
+
+    <div>
+      <button
+        [disabled]="!arrayResultFacturas?.length"
+        (click)="exportToExcel()"
+      >
+        Convertir a excel
+      </button>
+    </div>
+  </div>
+</div>
