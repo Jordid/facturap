@@ -14,9 +14,6 @@ export class FileUploaderComponent {
   file?: File;
 
   onSelectedFileChange(event: Event): void {
-    console.log("oK: file");
-    console.log(event);
-    
     this.file = null;
     const fileList: FileList = (event.target as HTMLInputElement).files;
     if (fileList.length > 0) {

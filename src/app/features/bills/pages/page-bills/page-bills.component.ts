@@ -29,11 +29,11 @@ export class PageBillsComponent {
 
   onChange(event) {
     this.selected = true;
+    const fileList = event.target.files[0];    
   }
 
   onFileSelected(event) {
     const file: File = event.target.files[0];
-    console.log(file);
     if (file) {
       const reader = new FileReader();
 
@@ -51,9 +51,6 @@ export class PageBillsComponent {
           if (cont > 1) {
             const arrayLines = factura.split('\t');
             if (arrayLines?.length === 11) {
-              //console.log(arrayLines);
-              //console.log('');
-
               const result: ResultFactura = {
                 ruc: arrayLines[2],
                 numeroFactura: arrayLines[1],
