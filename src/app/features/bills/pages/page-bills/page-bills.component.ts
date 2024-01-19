@@ -35,6 +35,8 @@ export class PageBillsComponent {
   onFileSelected(event) {
     const file: File = event.target.files[0];
     if (file) {
+      const columns = 12;
+      const valueColumn = 11;
       const reader = new FileReader();
 
       reader.readAsText(file);
@@ -50,18 +52,18 @@ export class PageBillsComponent {
           cont++;
           if (cont > 1) {
             const arrayLines = factura.split('\t');
-            if (arrayLines?.length === 11) {
+            if (arrayLines?.length === columns) {
               const result: ResultFactura = {
                 ruc: arrayLines[2],
                 numeroFactura: arrayLines[1],
                 razonSocial: arrayLines[3],
               };
 
-              const valorStringSucio = arrayLines[10];
+              const valorStringSucio = arrayLines[valueColumn];
               const arraySucio = valorStringSucio?.split('\n');
 
-              if (arraySucio?.length === 3) {
-                result.total = +arraySucio[1];
+              if (arraySucio?.length === 2) {
+                result.total = +arraySucio[0];
               }
 
               if (result?.total) {
